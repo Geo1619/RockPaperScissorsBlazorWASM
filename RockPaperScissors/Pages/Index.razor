@@ -1,0 +1,23 @@
+﻿@page "/"
+
+<h1>Rock, Paper, Scissors</h1>
+
+@if(!string.IsNullOrEmpty(resultMessage))
+{
+    <h3 style="color: @resultMessageColor">@resultMessage</h3>
+}
+<button class="btn btn-info" @onclick="PlayAgain">Play Again</button>
+
+<div style="display:flex; justify-content: center; margin-bottom: 20px;">
+    <img src="@opponentHand.Image" class="image"/>
+</div>
+
+
+
+<div style="display:flex; justify-content: space-around;">
+    @foreach (var hand in Hands)
+    {
+    <img src="@hand.Image" class="image selectable-image" @onclick="(()=> SelectHand(hand))" />
+    }
+</div>
+
